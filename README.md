@@ -1,6 +1,10 @@
 # I'm making life easier 
 
 Starting my process documentation on what to automate
+```bash
+crontab -e
+```
+
 ## The Five Time Fields
 Cron reads the fields from left to right. Each position represents a different unit of time:
 
@@ -11,9 +15,10 @@ Cron reads the fields from left to right. Each position represents a different u
 - Day of the Week: 0 through 7 (Both 0 and 7 stand for Sunday)
 
 The basic structure looks like this:
-```
+```bash
 [Minute] [Hour] [Day_of_Month] [Month] [Day_of_Week] /path/to/command
 ```
+
 ## Special Characters
 You do not have to use just single numbers. Cron uses special characters to create flexible schedules:
 | Character | Name | How it Works | Example |
@@ -32,3 +37,4 @@ You do not have to use just single numbers. Cron uses special characters to crea
 | `0 0 1 * *` | Runs at midnight (0:00) on the 1st day of every month. |
 | `0 8 * * 1-5` | Runs at 8:00 AM, Monday through Friday. |
 | `*/10 9-17 * * *` | Runs every 10 minutes, but only between 9:00 AM and 5:59 PM. |
+
