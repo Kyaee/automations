@@ -6,7 +6,7 @@ Starting my process documentation on what to automate.
 crontab -e
 
 # After running `crontab`
-0 12 * * * home/kyae-dev/Repos/automations/git_pull/execute.sh
+0 12 * * * home/{user}/[path]/git_pull/execute.sh
 ```
 
 ## The Five Time Fields
