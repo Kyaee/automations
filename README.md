@@ -4,6 +4,9 @@ Starting my process documentation on what to automate.
 ```bash
 # Schedule an automation
 crontab -e
+
+# After running `crontab`
+0 12 * * * home/kyae-dev/Repos/automations/git_pull/execute.sh
 ```
 
 ## The Five Time Fields
