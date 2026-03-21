@@ -15,19 +15,16 @@ LOG_FILE="$LOG_DIR/pull_$TIMESTAMP.log"
 echo "=== Auto Pull Run at $(date) ===" > "$LOG_FILE"
 
 # 2. Define the path to your new env file
-ENV_DIR="../environments"
-ENV_FILE="${ENV_DIR}/.git_pull.env"
-
-# Safety check: must stay inside ./environments
-case "$ENV_FILE" in
-  "$ENV_DIR"/*) ;;
-  *) echo "Invalid env file path: $ENV_FILE"; exit 1 ;;
-esac
+ENV_FILE="../environments/.git_pull.env"
 
 if [ ! -f "$ENV_FILE" ]; then
-  mkdir -p "$ENV_DIR"
-  touch "$ENV_FILE"
-  echo "Created missing env file: $ENV_FILE"
+  mkdir -p "$(dirname "$ENV_FILE")"
+  cat > "$ENV_FILE" <<'EOF'
+# Auto-created environment file
+BRANCH=main
+REMOTE=origin
+EOF
+  echo "Created missing env file with defaults: $ENV_FILE"
 fi
 REPO_COUNT=0
 

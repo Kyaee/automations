@@ -15,19 +15,16 @@ LOG_FILE="$LOG_DIR/status_$TIMESTAMP.log"
 echo "=== Git Status Run at $(date) ===" > "$LOG_FILE"
 
 # 2. Define the path to your env file and setup trackers
-ENV_DIR="../environments"
-ENV_FILE="${ENV_DIR}/.git_status.env"
-
-# Safety check: must stay inside ./environments
-case "$ENV_FILE" in
-  "$ENV_DIR"/*) ;;
-  *) echo "Invalid env file path: $ENV_FILE"; exit 1 ;;
-esac
+ENV_FILE="../environments/.git_status.env"
 
 if [ ! -f "$ENV_FILE" ]; then
-  mkdir -p "$ENV_DIR"
-  touch "$ENV_FILE"
-  echo "Created missing env file: $ENV_FILE"
+  mkdir -p "$(dirname "$ENV_FILE")"
+  cat > "$ENV_FILE" <<'EOF'
+# Auto-created environment file
+BRANCH=main
+REMOTE=origin
+EOF
+  echo "Created missing env file with defaults: $ENV_FILE"
 fi
 DIRTY_REPOS=0
 DIRTY_NAMES=""
