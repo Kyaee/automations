@@ -1,7 +1,8 @@
 # I'm making life easier 
 
-Starting my process documentation on what to automate
+Starting my process documentation on what to automate.
 ```bash
+# Schedule an automation
 crontab -e
 ```
 
