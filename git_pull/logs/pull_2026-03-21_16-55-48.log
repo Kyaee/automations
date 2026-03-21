@@ -1,0 +1,96 @@
+=== Auto Pull Run at Sat Mar 21 04:55:48 PM +08 2026 ===
+-> Checking: /home/kyae-dev/Repos/job/leados-ui (Branch: staging)
+From github.com:komento-sideprojects/leados-ui
+ * branch                staging    -> FETCH_HEAD
+Already up to date.
+--------------------------------
+-> Checking: /home/kyae-dev/Repos/job/fusion-fulfillment-mobile-native (Branch: staging)
+From https://github.com/komento-sideprojects/fusion-fulfillment-mobile-native
+ * branch            staging    -> FETCH_HEAD
+   03095e3..c6ea6a8  staging    -> origin/staging
+Updating 03095e3..c6ea6a8
+Fast-forward
+ .github/workflows/ota-update.yml                   |   2 +-
+ .gitignore                                         |   8 +-
+ app/(tabs)/settings/tenant.tsx                     |  18 ++
+ .../components/WarningPackingProcessModal.tsx      |  81 +++---
+ .../components/ExpiryLotSelectionModal.tsx         | 322 +++++++++++++++++++++
+ .../pick-lists/services/assign-to-crate.service.ts |   2 +
+ app/modules/pick-lists/types/index.ts              |   2 +
+ .../settings/context/app-settings.context.tsx      |   9 +
+ .../tenant-settings/types/tenant-setting.type.ts   |   1 +
+ app/picking/[pickListId]/index.tsx                 | 107 ++++++-
+ .../[asnRequestItemId]/product-dimensions.tsx      |  83 +++---
+ .../[asnRequestItemId]/product-dimensions.tsx      | 139 ++++++---
+ app/shared/api/nest.api.ts                         |   2 +-
+ components/ui/dialog.tsx                           |  34 ++-
+ src/@types/supabase.types.ts                       |  72 ++++-
+ 15 files changed, 740 insertions(+), 142 deletions(-)
+ create mode 100644 app/modules/pick-lists/components/ExpiryLotSelectionModal.tsx
+--------------------------------
+-> Checking: /home/kyae-dev/Repos/job/leados-api (Branch: staging)
+From https://github.com/komento-sideprojects/leados-api
+ * branch                staging    -> FETCH_HEAD
+   ccbb76262..a81e1c3d4  staging    -> origin/staging
+Updating ccbb76262..a81e1c3d4
+Fast-forward
+ .../InvoiceOrders/Enums/InvoiceOrderStatuses.php   | 23 ++++---
+ .../MarketplaceIntegrations/GlobalStatusMapper.php |  3 +-
+ .../MarketplaceOrderService.php                    | 80 ++++++++++------------
+ .../Modules/Shopify/DTO/ShopifyOrderDTO.php        |  8 ++-
+ 4 files changed, 60 insertions(+), 54 deletions(-)
+--------------------------------
+-> Checking: /home/kyae-dev/Repos/job/dig-developers-bible (Branch: main)
+From https://github.com/komento-sideprojects/dig-developers-bible
+ * branch            main       -> FETCH_HEAD
+   bd83e78..79b9529  main       -> origin/main
+Updating bd83e78..79b9529
+Fast-forward
+ README.md                                          |   1 +
+ .../backend/07-jnt-ai-endpoint-resolver.md         | 109 ++++++++++++
+ .../08-vpb-binding-and-inventory-syncing.md        | 147 +++++++++++++++++
+ developer-guidelines/frontend/index.md             |   6 +
+ .../frontend/orders-v2/OrdersV2_Usage.md           | 182 +++++++++++++++++++++
+ .../ordersSync-view/OrdersSyncView_Usage.md        | 170 +++++++++++++++++++
+ .../frontend/ordersSync-view/images/1.png          | Bin 0 -> 137218 bytes
+ .../frontend/ordersSync-view/images/10.png         | Bin 0 -> 22879 bytes
+ .../frontend/ordersSync-view/images/11.png         | Bin 0 -> 5474 bytes
+ .../frontend/ordersSync-view/images/12.png         | Bin 0 -> 10654 bytes
+ .../frontend/ordersSync-view/images/2.png          | Bin 0 -> 158566 bytes
+ .../frontend/ordersSync-view/images/3.png          | Bin 0 -> 24370 bytes
+ .../frontend/ordersSync-view/images/4.png          | Bin 0 -> 126814 bytes
+ .../frontend/ordersSync-view/images/5.png          | Bin 0 -> 89487 bytes
+ .../frontend/ordersSync-view/images/6.png          | Bin 0 -> 58973 bytes
+ .../frontend/ordersSync-view/images/7.png          | Bin 0 -> 77132 bytes
+ .../frontend/ordersSync-view/images/8.png          | Bin 0 -> 56982 bytes
+ .../frontend/ordersSync-view/images/9.png          | Bin 0 -> 9403 bytes
+ 18 files changed, 615 insertions(+)
+ create mode 100644 developer-guidelines/backend/07-jnt-ai-endpoint-resolver.md
+ create mode 100644 developer-guidelines/backend/08-vpb-binding-and-inventory-syncing.md
+ create mode 100644 developer-guidelines/frontend/orders-v2/OrdersV2_Usage.md
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/OrdersSyncView_Usage.md
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/1.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/10.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/11.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/12.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/2.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/3.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/4.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/5.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/6.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/7.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/8.png
+ create mode 100644 developer-guidelines/frontend/ordersSync-view/images/9.png
+--------------------------------
+-> Checking: /home/kyae-dev/Repos/job/fusion-warehouse-web (Branch: staging)
+From github.com:komento-sideprojects/fusion-warehouse-web
+ * branch            staging    -> FETCH_HEAD
+Already up to date.
+--------------------------------
+-> Checking: /home/kyae-dev/Repos/aws-email-automation (Branch: main)
+From https://github.com/athycc/aws-email-automation
+ * branch            main       -> FETCH_HEAD
+Already up to date.
+--------------------------------
+=== Run Complete ===
+
