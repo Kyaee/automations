@@ -1,7 +1,14 @@
 #!/bin/bash
 
+# setup xdg-session 	
+export DISPLAY=:0
+export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
+export XDG_RUNTIME_DIR="/run/user/$(id -u)"
+export WAYLAND_DISPLAY="wayland-0"
+
 # 1. Setup the Logging Directory
 LOG_DIR="/home/kyae-dev/Repos/kyae-automations/git_pull/logs"
+
 
 # 2. Generate a unique log file name (e.g., pull_2026-03-21_16-30-00.log)
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
@@ -36,4 +43,11 @@ for REPO_DIR in "${!REPOS[@]}"; do
 done
 
 echo -e "=== Run Complete ===\n" >> "$LOG_FILE"
-/usr/bin/notify-send "Git Auto-Pull Finished" "Checked ${#REPOS[@]} repositories. Logs saved to pull_logs."
+(
+    ACTION=$(/usr/bin/notify-send --action="open=View Log" "Git Auto-Pull Finished" "Checked ${#REPOS[@]} repositories.")
+    
+    if [ "$ACTION" == "open" ]; then
+        # Explicitly launch the default Fedora GNOME text editor
+        /usr/bin/gnome-text-editor "$LOG_FILE"
+    fi
+) &
