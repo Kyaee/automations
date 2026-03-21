@@ -16,6 +16,7 @@ declare -A REPOS=(
     ["/home/kyae-dev/Repos/job/leados-api"]="staging"
     ["/home/kyae-dev/Repos/job/leados-ui"]="staging"
     ["/home/kyae-dev/Repos/job/fusion-fulfillment-mobile-native"]="staging"
+    ["/home/kyae-dev/Repos/job/dig-developers-bible"]="main"
 )
 
 # 4. Loop through the array and pull each one
