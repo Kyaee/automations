@@ -1,35 +1,33 @@
 #!/bin/bash
 
-# setup xdg-session 	
+# --- CRON ENVIRONMENT FIX ---
 export DISPLAY=:0
 export DBUS_SESSION_BUS_ADDRESS="unix:path=/run/user/$(id -u)/bus"
 export XDG_RUNTIME_DIR="/run/user/$(id -u)"
 export WAYLAND_DISPLAY="wayland-0"
 
 # 1. Setup the Logging Directory
-LOG_DIR="/home/kyae-dev/Repos/kyae-automations/git_pull/logs"
-
-
-# 2. Generate a unique log file name (e.g., pull_2026-03-21_16-30-00.log)
+LOG_DIR="$HOME/Repos/kyae-automations/git_pull/logs"
+mkdir -p "$LOG_DIR"
 TIMESTAMP=$(date +"%Y-%m-%d_%H-%M-%S")
 LOG_FILE="$LOG_DIR/pull_$TIMESTAMP.log"
 
 echo "=== Auto Pull Run at $(date) ===" > "$LOG_FILE"
 
-# 3. Define repositories and their target branches
-declare -A REPOS=(
-    ["/home/kyae-dev/Repos/aws-email-automation"]="main"
-    ["/home/kyae-dev/Repos/job/fusion-warehouse-web"]="staging"
-    ["/home/kyae-dev/Repos/job/leados-api"]="staging"
-    ["/home/kyae-dev/Repos/job/leados-ui"]="staging"
-    ["/home/kyae-dev/Repos/job/fusion-fulfillment-mobile-native"]="staging"
-    ["/home/kyae-dev/Repos/job/dig-developers-bible"]="main"
-)
+# 2. Define the path to your new env file
+ENV_FILE="../.env"
+REPO_COUNT=0
 
-# 4. Loop through the array and pull each one
-for REPO_DIR in "${!REPOS[@]}"; do
-    BRANCH="${REPOS[$REPO_DIR]}"
+# 3. Read the env file line by line
+# IFS=':' splits each line at the colon so $REPO_DIR gets the path and $BRANCH gets the branch
+while IFS=':' read -r REPO_DIR BRANCH || [ -n "$REPO_DIR" ]; do
+    
+    # Skip empty lines and comments (lines starting with #)
+    [[ -z "$REPO_DIR" || "$REPO_DIR" =~ ^# ]] && continue
 
+    # Increment our counter for the notification
+    ((REPO_COUNT++))
+    
     echo "-> Checking: $REPO_DIR (Branch: $BRANCH)" >> "$LOG_FILE"
 
     if [ -d "$REPO_DIR" ]; then
@@ -38,16 +36,18 @@ for REPO_DIR in "${!REPOS[@]}"; do
     else
         echo "   [ERROR] Directory not found. Skipping." >> "$LOG_FILE"
     fi
-
+    
     echo "--------------------------------" >> "$LOG_FILE"
-done
+
+done < "$ENV_FILE"
 
 echo -e "=== Run Complete ===\n" >> "$LOG_FILE"
+
+# 4. Interactive Desktop Notification
 (
-    ACTION=$(/usr/bin/notify-send --action="open=View Log" "Git Auto-Pull Finished" "Checked ${#REPOS[@]} repositories.")
+    ACTION=$(/usr/bin/notify-send --action="open=View Log" "Git Auto-Pull Finished" "Checked $REPO_COUNT repositories.")
     
     if [ "$ACTION" == "open" ]; then
-        # Explicitly launch the default Fedora GNOME text editor
         /usr/bin/gnome-text-editor "$LOG_FILE"
     fi
 ) &
