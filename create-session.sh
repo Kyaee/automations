@@ -9,7 +9,7 @@ if ! command -v ptyxis >/dev/null 2>&1; then
 fi
 
 # Start an interactive bash in the new terminal so PATH/aliases from ~/.bashrc are loaded.
-ptyxis --new-window -- bash -ic "
+ptyxis -- bash -ic "
   cd \"$TARGET_DIR\" || exit 1
 
   if command -v agent >/dev/null 2>&1; then
